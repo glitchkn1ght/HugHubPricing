@@ -17,10 +17,10 @@ namespace HugHubPricing.BL
         //pass request with risk data with details of a gadget, return the best price retrieved from 3 external quotation engines
 
         private readonly ILogger<PriceEngine> Logger;
-        private readonly IRequestValidator RequestValidator;
+        private readonly IGeneralRequestValidator RequestValidator;
         private List<IQuotationProcessor> QuotationProcessors;
 
-        public PriceEngine(IRequestValidator requestValidator, ILogger<PriceEngine> logger)
+        public PriceEngine(IGeneralRequestValidator requestValidator, ILogger<PriceEngine> logger)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.RequestValidator = requestValidator ?? throw new ArgumentNullException(nameof(requestValidator));
@@ -38,8 +38,6 @@ namespace HugHubPricing.BL
 
             try
             {
-                throw new Exception("SomeException");
-
                 result = this.RequestValidator.ValidateGeneralPricingRequest(request, result);
 
                 if (result.Error.Code != 0)

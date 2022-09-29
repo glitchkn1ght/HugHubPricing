@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.Validation
 {
-    public class ProcessingCriteria_System2 : IProcessingCriteria
+    public class QuotationValidator_System3 : IQuotationSystemValidator
     {
         public bool IsPreprocessingCriteriaSatsfied(PricingRequest request)
         {
@@ -23,7 +23,7 @@ namespace HugHubPricing.Validation
 
         public bool IsPostProcessingCriteriaSatsfied(dynamic systemResponse, decimal existingLowestPrice)
         {
-            if (systemResponse.HasPrice && systemResponse.Price < existingLowestPrice)
+            if (systemResponse.IsSuccess && systemResponse.Price < existingLowestPrice)
             {
                 return true;
             }
@@ -31,4 +31,5 @@ namespace HugHubPricing.Validation
             return false;
         }
     }
+
 }

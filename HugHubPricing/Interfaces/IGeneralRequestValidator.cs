@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IRequestValidator
+    public interface IGeneralRequestValidator
     {
         PricingResult ValidateGeneralPricingRequest(PricingRequest request, PricingResult result);
     }

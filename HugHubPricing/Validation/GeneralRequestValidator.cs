@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.Validation
 {
-    public class RequestValidator : IRequestValidator
+    public class GeneralRequestValidator : IGeneralRequestValidator
     {
         public PricingResult ValidateGeneralPricingRequest(PricingRequest request, PricingResult result)
         {
@@ -21,14 +21,14 @@ namespace HugHubPricing.Validation
                 return result; 
             }
 
-            if (string.IsNullOrEmpty(request.RiskData.FirstName))
+            if (string.IsNullOrWhiteSpace(request.RiskData.FirstName))
             {
                 result.Error.Code = -111;
                 result.Error.Message = "First name is required";
                 return result;
             }
 
-            if (string.IsNullOrEmpty(request.RiskData.LastName))
+            if (string.IsNullOrWhiteSpace(request.RiskData.LastName))
             {
                 result.Error.Code = -112;
                 result.Error.Message = "Surname is required";

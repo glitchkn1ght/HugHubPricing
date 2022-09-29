@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IProcessingCriteria
+    public interface IQuotationSystemValidator
     {
         bool IsPreprocessingCriteriaSatsfied(PricingRequest request);
 

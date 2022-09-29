@@ -52,7 +52,7 @@ namespace HugHubPricing
          //   services.Configure<GameSettings>(configuration.GetSection("GameSettings"));
 
             // add services:
-            services.AddTransient<IRequestValidator, RequestValidator>();
+            services.AddTransient<IGeneralRequestValidator, GeneralRequestValidator>();
 
             services.AddTransient<IPriceEngine, PriceEngine>();
 

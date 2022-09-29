@@ -34,9 +34,9 @@ namespace HugHubPricing.Services
                 }
             };
 
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem1(), new QuotationSystem1("http://quote-system-1.com", "1234"), new ProcessingCriteria_System1()));
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem2(), new QuotationSystem2("http://quote-system-2.com", "1235",request), new ProcessingCriteria_System2()));
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem3(), new QuotationSystem3("http://quote-system-3.com", "100"), new ProcessingCriteria_System3()));
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem1(), new QuotationSystem1("http://quote-system-1.com", "1234"), new QuotationValidator_System1()));
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem2(), new QuotationSystem2("http://quote-system-2.com", "1235",request), new QuotationValidator_System2()));
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem3(), new QuotationSystem3("http://quote-system-3.com", "100"), new QuotationValidator_System3()));
 
             PricingResult result = this.PriceEngine.GetPrice(request);
 

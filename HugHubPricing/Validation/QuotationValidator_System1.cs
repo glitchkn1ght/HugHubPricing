@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.Validation
 {
-    public class ProcessingCriteria_System3 : IProcessingCriteria
+    public class QuotationValidator_System1 : IQuotationSystemValidator
     {
         public bool IsPreprocessingCriteriaSatsfied(PricingRequest request)
         {
-            if (request.RiskData.Make == "examplemake1" || request.RiskData.Make == "examplemake2" ||
-                request.RiskData.Make == "examplemake3")
+            if (request.RiskData.DOB != null)
             {
                 return true;
             }
@@ -23,7 +22,7 @@ namespace HugHubPricing.Validation
 
         public bool IsPostProcessingCriteriaSatsfied(dynamic systemResponse, decimal existingLowestPrice)
         {
-            if (systemResponse.IsSuccess && systemResponse.Price < existingLowestPrice)
+            if (systemResponse.IsSuccess = true)
             {
                 return true;
             }
@@ -31,5 +30,4 @@ namespace HugHubPricing.Validation
             return false;
         }
     }
-
 }
