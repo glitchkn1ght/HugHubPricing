@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HugHubPricing.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HugHubPricing.QuotationSystems
 {
-    public class QuotationSystem1
+    public class QuotationSystem1 : IQuotationSystem
     {
         public QuotationSystem1(string url, string port)
         {

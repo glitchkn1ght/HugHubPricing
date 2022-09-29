@@ -4,6 +4,10 @@ using HugHubPricing.Models.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using HugHubPricing.Processors;
+using HugHubPricing.QuotationSystems;
+using HugHubPricing.Adapters;
+using HugHubPricing.Validation;
 
 namespace HugHubPricing.Services
 {
@@ -29,6 +33,10 @@ namespace HugHubPricing.Services
                     Value = 500
                 }
             };
+
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new QuotationSystem1("http://quote-system-1.com", "1234"), new RequestAdapterSystem1(), new ProcessingCriteria_System1()));
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new QuotationSystem2("http://quote-system-2.com", "1235",request), new RequestAdapterSystem2(), new ProcessingCriteria_System2()));
+            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new QuotationSystem3("http://quote-system-3.com", "100"), new RequestAdapterSystem3(), new ProcessingCriteria_System3()));
 
             PricingResult result = this.PriceEngine.GetPrice(request);
 

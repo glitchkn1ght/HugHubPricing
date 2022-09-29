@@ -9,7 +9,7 @@ using HugHubPricing.QuotationSystems;
 using HugHubPricing.Models.Results;
 using HugHubPricing.Interfaces;
 
-namespace HugHubPricing
+namespace HugHubPricing.BL
 {
     public class PriceEngine : IPriceEngine
     {
@@ -25,9 +25,10 @@ namespace HugHubPricing
         public PriceEngine(IRequestValidator requestValidator)
         {
             this.RequestValidator = requestValidator ?? throw new ArgumentNullException(nameof(requestValidator));
+            this.QuotationProcessors = new List<IQuotationProcessor>();
         }
         
-        public void addQuotationEngine(IQuotationProcessor quotationProcessor)
+        public void addQuotationProcessor(IQuotationProcessor quotationProcessor)
         {
             this.QuotationProcessors.Add(quotationProcessor);
         }
@@ -51,10 +52,6 @@ namespace HugHubPricing
                 {
                     result = quotationProcessor.ProcessQuotation(request, result);
                 }
-
-                //    QuotationSystem1 system1 = new QuotationSystem1("http://quote-system-1.com", "1234");
-                //    QuotationSystem2 system2 = new QuotationSystem2("http://quote-system-2.com", "1235", systemRequest2);
-                //    QuotationSystem3 system3 = new QuotationSystem3("http://quote-system-3.com", "100");
 
                 if (result.Price == 0)
                 {

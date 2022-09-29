@@ -4,17 +4,18 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HugHubPricing.Interfaces;
 
 namespace HugHubPricing.QuotationSystems
 {
-    public class QuotationSystem2
+    public class QuotationSystem2 : IQuotationSystem
     {
         public QuotationSystem2(string url, string port, dynamic request)
         {
 
         }
 
-        public dynamic GetPrice()
+        public dynamic GetPrice(dynamic request)
         {
             //makes a call to an external service - SNIP
             //var response = _someExternalService.PostHttpRequest(requestData);

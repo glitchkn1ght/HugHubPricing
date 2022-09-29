@@ -1,10 +1,16 @@
 ﻿using HugHubPricing.Models;
 using HugHubPricing.Services;
+using HugHubPricing.Validation;
+using HugHubPricing.Adapters;
+using HugHubPricing.BL;
+using HugHubPricing.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using System;
 using System.IO;
+using HugHubPricing.QuotationSystems;
+using HugHubPricing.Processors;
 
 namespace HugHubPricing
 {
@@ -29,8 +35,9 @@ namespace HugHubPricing
         {
             // build config
             var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
+            .SetBasePath(Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\")))
             .AddJsonFile("appsettings.json", optional: false)
+            .AddEnvironmentVariables()
             .Build();
 
             // configure logging
@@ -45,8 +52,19 @@ namespace HugHubPricing
          //   services.Configure<GameSettings>(configuration.GetSection("GameSettings"));
 
             // add services:
-            services.AddTransient<IWordGameService, WordGameService>();
+            services.AddTransient<IRequestValidator, RequestValidator>();
 
+            //services.AddTransient<IQuotationSystem, QuotationSystem1>();
+            //services.AddTransient<IQuotationSystem, QuotationSystem2>();
+            //services.AddTransient<IQuotationSystem, QuotationSystem3>();
+            
+            //services.AddTransient<IRequestAdapter, RequestAdapterSystem1>();
+            //services.AddTransient<IRequestAdapter, RequestAdapterSystem2>();
+            //services.AddTransient<IRequestAdapter, RequestAdapterSystem3>();
+
+
+            //services.AddTransient<IQuotationProcessor, QuotationProcessor>(x => x.GetService();
+            services.AddTransient<IPriceEngine, PriceEngine>();
 
             // add app
             services.AddTransient<PriceEngineOrchestrator>();
