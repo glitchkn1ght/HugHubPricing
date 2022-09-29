@@ -17,10 +17,10 @@ namespace HugHubPricing.Processors
         private readonly IRequestAdapter RequestAdapter;
         private readonly IProcessingCriteria ProcessingCriteria;
 
-        public QuotationProcessor(IQuotationSystem quotationSystem, IRequestAdapter requestAdapter, IProcessingCriteria processingCriteria)
+        public QuotationProcessor(IRequestAdapter requestAdapter, IQuotationSystem quotationSystem, IProcessingCriteria processingCriteria)
         {
-            this.QuotationSystem = quotationSystem ?? throw new ArgumentNullException(nameof(quotationSystem));
             this.RequestAdapter = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            this.QuotationSystem = quotationSystem ?? throw new ArgumentNullException(nameof(quotationSystem));
             this.ProcessingCriteria = processingCriteria ?? throw new ArgumentNullException(nameof(processingCriteria));
         }
 
