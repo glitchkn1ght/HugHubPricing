@@ -17,8 +17,7 @@ namespace HugHubPricingUnitTests.BusinessLogicTests
 
     public class PriceEngineTests
     {
-
-        CommonTestingData testData;
+        private CommonTestingData testData;
         private Mock<IGeneralRequestValidator> GeneralRequestValidatorMock;
         private Mock<ILogger<PriceEngine>> LoggerMock;
         private Mock<IQuotationSystem> QuotationSystem1Mock;
