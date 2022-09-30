@@ -41,10 +41,6 @@ namespace HugHubPricing
                 .CreateLogger()))
                 .BuildServiceProvider();
 
-            //Configure game and api settings
-          //  services.Configure<ApiSettings>(configuration.GetSection("ApiSettings"));
-         //   services.Configure<GameSettings>(configuration.GetSection("GameSettings"));
-
             // add services:
             services.AddTransient<IGeneralRequestValidator, GeneralRequestValidator>();
 

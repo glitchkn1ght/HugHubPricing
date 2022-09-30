@@ -35,7 +35,7 @@ namespace HugHubPricing.BL
 
             this.PriceEngine.AddQuotationSystem(new QuotationSystem(new QS1RequestValidator(), new QuotationPricingService1("http://quote-system-1.com", "1234", new StandardRequestMapper()), new StandardReponseValidator(), new StandardResponseMapper()));
             this.PriceEngine.AddQuotationSystem(new QuotationSystem(new QS2RequestValidator(), new QuotationPricingService2("http://quote-system-2.com", "1235", new QS2RequestMapper()), new QS2ResponseValidator(), new StandardResponseMapper()));
-            this.PriceEngine.AddQuotationSystem(new QuotationSystem(new QS3RequestValidator(), new QuotationPricingService3("http://quote-system-3.com", "100", new StandardRequestMapper()), new QS2ResponseValidator(), new StandardResponseMapper()));
+            this.PriceEngine.AddQuotationSystem(new QuotationSystem(new QS3RequestValidator(), new QuotationPricingService3("http://quote-system-3.com", "100", new StandardRequestMapper()), new StandardReponseValidator(), new StandardResponseMapper()));
 
 
             PricingResult result = this.PriceEngine.GetCheapestQuotationPrice(request);
