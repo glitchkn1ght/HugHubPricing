@@ -1,17 +1,12 @@
-﻿using HugHubPricing.Models;
-using System;
-using System.Collections.Generic;
+﻿using HugHubPricing.Interfaces;
+using HugHubPricing.Models;
 using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HugHubPricing.Interfaces;
 
-namespace HugHubPricing.Adapters
-{    
-    public class RequestAdapterSystem2 : IRequestAdapter
+namespace HugHubPricing.Mappers
+{
+    public class System2_RequestMapper : IRequestMapper
     {
-        public dynamic Adapt(PricingRequest request)
+        public dynamic MapRequestFields(PricingRequest request)
         {
             dynamic systemRequest2 = new ExpandoObject();
             systemRequest2.FirstName = request.RiskData.FirstName;

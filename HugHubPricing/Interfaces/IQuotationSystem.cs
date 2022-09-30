@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HugHubPricing.Models;
+using HugHubPricing.Models.Results;
 
 namespace HugHubPricing.Interfaces
 {
     public interface IQuotationSystem
     {
-        dynamic GetPrice(dynamic request);
+        PricingResult ProcessQuotation(PricingRequest request, PricingResult result);
     }
 }

@@ -1,15 +1,12 @@
 ﻿using HugHubPricing.Interfaces;
 using HugHubPricing.Models;
 using HugHubPricing.Models.Results;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using HugHubPricing.Processors;
 using HugHubPricing.QuotationSystems;
-using HugHubPricing.Adapters;
+using HugHubPricing.Mappers;
+using System;
 using HugHubPricing.Validation;
 
-namespace HugHubPricing.Services
+namespace HugHubPricing.BL
 {
     public class PriceEngineOrchestrator
     {
@@ -34,9 +31,9 @@ namespace HugHubPricing.Services
                 }
             };
 
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem1(), new QuotationSystem1("http://quote-system-1.com", "1234"), new QuotationValidator_System1()));
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem2(), new QuotationSystem2("http://quote-system-2.com", "1235",request), new QuotationValidator_System2()));
-            this.PriceEngine.addQuotationProcessor(new QuotationProcessor(new RequestAdapterSystem3(), new QuotationSystem3("http://quote-system-3.com", "100"), new QuotationValidator_System3()));
+            this.PriceEngine.AddQuotationSystem(new QuotationSystem1("http://quote-system-1.com", "1234", new RequestMapper(), new ResponseMapper(), new ReponseValidator()));
+            this.PriceEngine.AddQuotationSystem(new QuotationSystem2("http://quote-system-2.com", "1235",request, new System2_RequestMapper(), new ResponseMapper(), new System2_ResponseValidator()));
+            this.PriceEngine.AddQuotationSystem(new QuotationSystem3("http://quote-system-3.com", "100", new RequestMapper(), new ResponseMapper(), new ReponseValidator()));
 
             PricingResult result = this.PriceEngine.GetPrice(request);
 

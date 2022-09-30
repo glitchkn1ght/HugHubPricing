@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Results\" />
     <Folder Include="Logs\" />
+    <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>

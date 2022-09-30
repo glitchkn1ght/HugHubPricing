@@ -1,22 +1,46 @@
 ﻿using HugHubPricing.Interfaces;
+using HugHubPricing.Models;
+using HugHubPricing.Models.Results;
+using HugHubPricing.Validation;
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HugHubPricing.QuotationSystems
 {
     public class QuotationSystem1 : IQuotationSystem
     {
-        public QuotationSystem1(string url, string port)
-        {
+        private readonly IRequestMapper RequestMapper;
+        private readonly IResponseMapper ResponseMapper;
+        private readonly IResponseValidator ResponseValidator;
 
+        public QuotationSystem1(string url, string port, IRequestMapper requestMapper, IResponseMapper responseMapper, IResponseValidator responseValidator)
+        {
+            this.RequestMapper = requestMapper ?? throw new ArgumentNullException(nameof(requestMapper));
+            this.ResponseMapper = responseMapper ?? throw new ArgumentNullException(nameof(responseMapper));
+            this.ResponseValidator = responseValidator ?? throw new ArgumentNullException(nameof(responseValidator));
         }
 
-        public dynamic GetPrice(dynamic request)
+        public PricingResult ProcessQuotation(PricingRequest request, PricingResult result)
         {
+            if (request.RiskData.DOB == null)
+            {
+                return result;
+            }
+
+            dynamic systemResponse = this.GetPriceResponse(request);
+
+            if (this.ResponseValidator.ValidateResponse(systemResponse))
+            {
+                result = this.ResponseMapper.MapResponse(result, systemResponse);
+            }
+
+            return result;
+        }
+
+        private dynamic GetPriceResponse(PricingRequest request)
+        {
+            dynamic MappedResponse = this.RequestMapper.MapRequestFields(request);
+
             //makes a call to an external service - SNIP
             //var response = _someExternalService.PostHttpRequest(requestData);
 

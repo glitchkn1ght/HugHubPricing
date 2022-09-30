@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HugHubPricing.Interfaces;
 using HugHubPricing.Models;
-using HugHubPricing.QuotationSystems;
 using HugHubPricing.Models.Results;
-using HugHubPricing.Interfaces;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace HugHubPricing.BL
 {
@@ -18,18 +13,18 @@ namespace HugHubPricing.BL
 
         private readonly ILogger<PriceEngine> Logger;
         private readonly IGeneralRequestValidator RequestValidator;
-        private List<IQuotationProcessor> QuotationProcessors;
+        private List<IQuotationSystem> QuotationSystems;
 
         public PriceEngine(IGeneralRequestValidator requestValidator, ILogger<PriceEngine> logger)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.RequestValidator = requestValidator ?? throw new ArgumentNullException(nameof(requestValidator));
-            this.QuotationProcessors = new List<IQuotationProcessor>();
+            this.QuotationSystems = new List<IQuotationSystem>();
         }
         
-        public void addQuotationProcessor(IQuotationProcessor quotationProcessor)
+        public void AddQuotationSystem(IQuotationSystem quotationSystem)
         {
-            this.QuotationProcessors.Add(quotationProcessor);
+            this.QuotationSystems.Add(quotationSystem);
         }
 
         public PricingResult GetPrice(PricingRequest request)
@@ -49,9 +44,9 @@ namespace HugHubPricing.BL
                 this.Logger.LogInformation($"Operation=GetPrice(PriceEngine), Status=Success, Message=Request has been successfully validated.");
                 
                 //now call 3 external systems and get the best price
-                foreach (IQuotationProcessor quotationProcessor in this.QuotationProcessors)
+                foreach (IQuotationSystem quotationSystem in this.QuotationSystems)
                 {
-                    result = quotationProcessor.ProcessQuotation(request, result);
+                    result = quotationSystem.ProcessQuotation(request, result);
                 }
 
                 if (result.Price == 0)

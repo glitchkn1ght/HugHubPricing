@@ -1,16 +1,10 @@
-﻿using HugHubPricing.Models;
-using HugHubPricing.Services;
-using HugHubPricing.Validation;
-using HugHubPricing.Adapters;
-using HugHubPricing.BL;
+﻿using HugHubPricing.BL;
 using HugHubPricing.Interfaces;
+using HugHubPricing.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using System;
 using System.IO;
-using HugHubPricing.QuotationSystems;
-using HugHubPricing.Processors;
 
 namespace HugHubPricing
 {

@@ -1,10 +1,5 @@
 ﻿using HugHubPricing.Models;
 using HugHubPricing.Models.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HugHubPricing.Interfaces
 {
@@ -12,6 +7,6 @@ namespace HugHubPricing.Interfaces
     {
         public PricingResult GetPrice(PricingRequest request);
 
-        public void addQuotationProcessor(IQuotationProcessor quotationProcessor);
+        public void AddQuotationSystem(IQuotationSystem quotationSystem);
     }
 }
