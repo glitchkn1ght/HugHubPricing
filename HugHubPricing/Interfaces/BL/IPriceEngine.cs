@@ -5,7 +5,7 @@ namespace HugHubPricing.Interfaces
 {
     public interface IPriceEngine
     {
-        public PricingResult GetPrice(PricingRequest request);
+        public PricingResult GetCheapestQuotationPrice(PricingRequest request);
 
         public void AddQuotationSystem(IQuotationSystem quotationSystem);
     }

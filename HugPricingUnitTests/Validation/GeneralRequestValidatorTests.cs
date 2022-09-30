@@ -4,11 +4,11 @@ using HugHubPricing.Models;
 using System;
 using HugHubPricing.Validation;
 using HugHubPricing.Models.Results;
-using HugPricingUnitTests.CommonTestData;
+using HugHubPricingUnitTests.CommonTestData;
 
-namespace HugPricingUnitTests.ValidationTests.RequestValidatorTests
+namespace HugPricingUnitTests.ValidationTests.GeneralRequestValidatorTests
 {
-    public class RequestValidatorTests
+    public class GeneralRequestValidatorTests
     {
         CommonTestingData TestData;
         GeneralRequestValidator RequestValidator;

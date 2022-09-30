@@ -4,7 +4,7 @@ using System.Dynamic;
 
 namespace HugHubPricing.Mappers
 {
-    public class System2_RequestMapper : IRequestMapper
+    public class QS2RequestMapper : IQSRequestMapper
     {
         public dynamic MapRequestFields(PricingRequest request)
         {

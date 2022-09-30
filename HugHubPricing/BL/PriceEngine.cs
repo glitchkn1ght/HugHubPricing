@@ -12,13 +12,13 @@ namespace HugHubPricing.BL
         //pass request with risk data with details of a gadget, return the best price retrieved from 3 external quotation engines
 
         private readonly ILogger<PriceEngine> Logger;
-        private readonly IGeneralRequestValidator RequestValidator;
+        private readonly IGeneralRequestValidator GeneralRequestValidator;
         private List<IQuotationSystem> QuotationSystems;
 
-        public PriceEngine(IGeneralRequestValidator requestValidator, ILogger<PriceEngine> logger)
+        public PriceEngine(ILogger<PriceEngine> logger, IGeneralRequestValidator requestValidator)
         {
             this.Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.RequestValidator = requestValidator ?? throw new ArgumentNullException(nameof(requestValidator));
+            this.GeneralRequestValidator = requestValidator ?? throw new ArgumentNullException(nameof(requestValidator));
             this.QuotationSystems = new List<IQuotationSystem>();
         }
         
@@ -27,13 +27,13 @@ namespace HugHubPricing.BL
             this.QuotationSystems.Add(quotationSystem);
         }
 
-        public PricingResult GetPrice(PricingRequest request)
+        public PricingResult GetCheapestQuotationPrice(PricingRequest request)
         {
             PricingResult result = new PricingResult();
 
             try
             {
-                result = this.RequestValidator.ValidateGeneralPricingRequest(request, result);
+                result = this.GeneralRequestValidator.ValidateGeneralPricingRequest(request, result);
 
                 if (result.Error.Code != 0)
                 {
@@ -47,15 +47,6 @@ namespace HugHubPricing.BL
                 foreach (IQuotationSystem quotationSystem in this.QuotationSystems)
                 {
                     result = quotationSystem.ProcessQuotation(request, result);
-                }
-
-                if (result.Price == 0)
-                {
-                    result.Error.Code = -101;
-
-                    result.Error.Message = "No quotes were found for request";
-                    
-                    this.Logger.LogInformation($"Operation=GetPrice(PriceEngine), Status=Success, Message=No quotes were found for this reqeust.");
                 }
 
                 return result;

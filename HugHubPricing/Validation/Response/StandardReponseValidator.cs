@@ -3,7 +3,7 @@ using HugHubPricing.Models;
 
 namespace HugHubPricing.Validation
 {
-    public class ReponseValidator : IResponseValidator
+    public class StandardReponseValidator : IQSResponseValidator
     {
         public bool ValidateResponse(dynamic systemResponse)
         {

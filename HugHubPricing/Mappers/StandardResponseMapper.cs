@@ -5,9 +5,9 @@ using System.Dynamic;
 
 namespace HugHubPricing.Mappers
 {
-    public class ResponseMapper : IResponseMapper
+    public class StandardResponseMapper : IQSResponseMapper
     {
-        public PricingResult MapResponse(PricingResult result, dynamic systemResponse)
+        public PricingResult MapResponse(dynamic systemResponse, PricingResult result)
         {
             result.Price = systemResponse.Price;
             result.InsurerName= systemResponse.Name;

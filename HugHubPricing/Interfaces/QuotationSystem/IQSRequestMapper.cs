@@ -3,7 +3,7 @@ using HugHubPricing.Models.Results;
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IRequestMapper
+    public interface IQSRequestMapper
     {
         dynamic MapRequestFields(PricingRequest request);
     }

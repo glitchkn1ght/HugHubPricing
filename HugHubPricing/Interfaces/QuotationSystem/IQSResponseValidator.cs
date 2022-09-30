@@ -2,7 +2,7 @@
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IResponseValidator
+    public interface IQSResponseValidator
     {
         bool ValidateResponse(dynamic systemResponse);
     }
