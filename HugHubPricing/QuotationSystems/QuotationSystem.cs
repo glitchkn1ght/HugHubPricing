@@ -13,7 +13,10 @@ namespace HugHubPricing.QuotationSystems
         private readonly IQSResponseValidator ResponseValidator;
         private readonly IQSResponseMapper ResponseMapper;
 
-        public QuotationSystem(     IQSRequestValidator requestValidator,
+   
+
+        public QuotationSystem(   
+                                    IQSRequestValidator requestValidator,
                                     IQuotationPricingService quotationPricingService,
                                     IQSResponseValidator responseValidator,
                                     IQSResponseMapper responseMapper

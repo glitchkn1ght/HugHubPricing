@@ -9,7 +9,7 @@ using HugHubPricingUnitTests.CommonTestData;
 using Moq;
 using HugHubPricing.QuotationSystems;
 using HugHubPricing.Interfaces;
-using HugHubPricing.BL;
+using HugHubPricing.BusinessLogic;
 using Microsoft.Extensions.Logging;
 using HugHubPricing.Validation.QuotationSystem.Request;
 using HugHubPricing.Service;

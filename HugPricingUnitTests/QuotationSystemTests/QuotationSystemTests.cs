@@ -34,7 +34,87 @@ namespace HugHubPricingUnitTests.QuotationSystemTests
         }
 
         [Test]
-        public void WhenAllDataValidated_ResultIsUpdated()
+        public void WhenConstructorCalledWithNullRequestValidator_ThenArgNullExceptionThrown()
+        {
+            Assert.Throws(
+                Is.TypeOf<ArgumentNullException>().And.Property("ParamName").EqualTo("requestValidator"), delegate
+                {
+                    this.quotationSystem = new QuotationSystem
+                    (
+                       null,
+                       this.QuotationPricingServiceMock.Object,
+                       this.ResponseValidatorMock.Object,
+                       this.ResponseMapperMock.Object
+                    );
+                });
+        }
+
+        [Test]
+        public void WhenConstructorCalledWithNullService_ThenArgNullExceptionThrown()
+        {
+            Assert.Throws(
+                Is.TypeOf<ArgumentNullException>().And.Property("ParamName").EqualTo("quotationPricingService"), delegate
+                {
+                    this.quotationSystem = new QuotationSystem
+                    (
+                       this.RequestValidatorMock.Object,
+                       null,
+                       this.ResponseValidatorMock.Object,
+                       this.ResponseMapperMock.Object
+                    );
+                });
+        }
+
+        [Test]
+        public void WhenConstructorCalledWithNullResponseValidator_ThenArgNullExceptionThrown()
+        {
+            Assert.Throws(
+                Is.TypeOf<ArgumentNullException>().And.Property("ParamName").EqualTo("responseValidator"), delegate
+                {
+                    this.quotationSystem = new QuotationSystem
+                    (
+                       this.RequestValidatorMock.Object,
+                       this.QuotationPricingServiceMock.Object,
+                       null,
+                       this.ResponseMapperMock.Object
+                    );
+                });
+        }
+
+        [Test]
+        public void WhenConstructorCalledWithNullResponseMapper_ThenArgNullExceptionThrown()
+        {
+            Assert.Throws(
+                Is.TypeOf<ArgumentNullException>().And.Property("ParamName").EqualTo("responseMapper"), delegate
+                {
+                    this.quotationSystem = new QuotationSystem
+                    (
+                       this.RequestValidatorMock.Object,
+                       this.QuotationPricingServiceMock.Object,
+                       this.ResponseValidatorMock.Object,
+                       null
+                    );
+                });
+        }
+
+        [Test]
+        public void WhenConstructorCalledWithValidArguements_ThenNoExceptionThrown()
+        {
+            Assert.DoesNotThrow(
+                delegate
+                {
+                    this.quotationSystem = new QuotationSystem
+                    (
+                       this.RequestValidatorMock.Object,
+                       this.QuotationPricingServiceMock.Object,
+                       this.ResponseValidatorMock.Object,
+                       this.ResponseMapperMock.Object
+                    );
+                });
+        }
+
+        [Test]
+        public void WhenQuoteSuccessfullyRetrieved_ThenResultIsUpdated()
         {
             this.RequestValidatorMock.Setup(x => x.ValidateRequest(It.IsAny<PricingRequest>())).Returns(true);
             this.QuotationPricingServiceMock.Setup(x => x.GetServiceResponse(It.IsAny<PricingRequest>())).Returns(this.systemResponse);
@@ -52,7 +132,7 @@ namespace HugHubPricingUnitTests.QuotationSystemTests
         }
 
         [Test]
-        public void WhenRequestValidationFails_ResultIsNotUpdated()
+        public void WhenRequestValidationFails_ThenResultIsNotUpdated()
         {
             this.RequestValidatorMock.Setup(x => x.ValidateRequest(It.IsAny<PricingRequest>())).Returns(false);
             this.QuotationPricingServiceMock.Setup(x => x.GetServiceResponse(It.IsAny<PricingRequest>())).Returns(this.systemResponse);

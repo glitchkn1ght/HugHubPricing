@@ -1,8 +1,5 @@
 ﻿using HugHubPricing.Interfaces;
 using HugHubPricing.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HugHubPricing.Validation.QuotationSystem.Request
 {

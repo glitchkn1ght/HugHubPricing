@@ -1,6 +1,4 @@
-﻿using HugHubPricing.Models;
-
-namespace HugHubPricing.Interfaces
+﻿namespace HugHubPricing.Interfaces
 {
     public interface IQSResponseValidator
     {

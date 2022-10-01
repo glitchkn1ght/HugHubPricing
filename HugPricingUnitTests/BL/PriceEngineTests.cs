@@ -1,16 +1,10 @@
-﻿using NUnit.Framework;
-using HugHubPricing;
-using HugHubPricing.Models;
-using System;
-using HugHubPricing.Validation;
-using HugHubPricing.Models.Results;
-using System.Dynamic;
-using HugHubPricingUnitTests.CommonTestData;
-using Moq;
-using HugHubPricing.QuotationSystems;
+﻿using HugHubPricing.BusinessLogic;
 using HugHubPricing.Interfaces;
-using HugHubPricing.BL;
+using HugHubPricing.Models.Results;
+using HugHubPricingUnitTests.CommonTestData;
 using Microsoft.Extensions.Logging;
+using Moq;
+using NUnit.Framework;
 
 namespace HugHubPricingUnitTests.BusinessLogicTests
 {

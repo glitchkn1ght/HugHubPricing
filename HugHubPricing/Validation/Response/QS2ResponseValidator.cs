@@ -1,5 +1,4 @@
 ﻿using HugHubPricing.Interfaces;
-using HugHubPricing.Models;
 
 namespace HugHubPricing.Validation
 {

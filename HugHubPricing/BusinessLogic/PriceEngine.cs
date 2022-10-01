@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 
-namespace HugHubPricing.BL
+namespace HugHubPricing.BusinessLogic
 {
     public class PriceEngine : IPriceEngine
     {

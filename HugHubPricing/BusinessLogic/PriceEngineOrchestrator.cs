@@ -1,14 +1,14 @@
 ﻿using HugHubPricing.Interfaces;
+using HugHubPricing.Mappers;
 using HugHubPricing.Models;
 using HugHubPricing.Models.Results;
 using HugHubPricing.QuotationSystems;
-using HugHubPricing.Mappers;
-using System;
+using HugHubPricing.Service;
 using HugHubPricing.Validation;
 using HugHubPricing.Validation.QuotationSystem.Request;
-using HugHubPricing.Service;
+using System;
 
-namespace HugHubPricing.BL
+namespace HugHubPricing.BusinessLogic
 {
     public class PriceEngineOrchestrator
     {

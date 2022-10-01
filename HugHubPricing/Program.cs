@@ -1,4 +1,4 @@
-﻿using HugHubPricing.BL;
+﻿using HugHubPricing.BusinessLogic;
 using HugHubPricing.Interfaces;
 using HugHubPricing.Validation;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +22,6 @@ namespace HugHubPricing
 
             // entry to run app
              serviceProvider.GetService<PriceEngineOrchestrator>().RunPricingEngine();
-
         }
 
         private static void ConfigureServices(IServiceCollection services)
