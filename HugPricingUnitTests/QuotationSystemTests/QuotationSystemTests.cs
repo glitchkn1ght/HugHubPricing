@@ -1,14 +1,12 @@
-﻿using NUnit.Framework;
-using HugHubPricing;
+﻿using HugHubPricing.Interfaces;
 using HugHubPricing.Models;
-using System;
-using HugHubPricing.Validation;
 using HugHubPricing.Models.Results;
-using System.Dynamic;
+using HugHubPricing.QuotationSystems;
 using HugHubPricingUnitTests.CommonTestData;
 using Moq;
-using HugHubPricing.QuotationSystems;
-using HugHubPricing.Interfaces;
+using NUnit.Framework;
+using System;
+using System.Dynamic;
 
 namespace HugHubPricingUnitTests.QuotationSystemTests
 {

@@ -1,19 +1,14 @@
-﻿using NUnit.Framework;
-using HugHubPricing;
-using HugHubPricing.Models;
-using System;
-using HugHubPricing.Validation;
-using HugHubPricing.Models.Results;
-using System.Dynamic;
-using HugHubPricingUnitTests.CommonTestData;
-using Moq;
-using HugHubPricing.QuotationSystems;
-using HugHubPricing.Interfaces;
-using HugHubPricing.BusinessLogic;
-using Microsoft.Extensions.Logging;
-using HugHubPricing.Validation.QuotationSystem.Request;
-using HugHubPricing.Service;
+﻿using HugHubPricing.BusinessLogic;
 using HugHubPricing.Mappers;
+using HugHubPricing.Models.Results;
+using HugHubPricing.QuotationSystems;
+using HugHubPricing.Service;
+using HugHubPricing.Validation;
+using HugHubPricing.Validation.QuotationSystem.Request;
+using HugHubPricingUnitTests.CommonTestData;
+using Microsoft.Extensions.Logging;
+using Moq;
+using NUnit.Framework;
 
 namespace HugHub.IntegrationTests
 {
