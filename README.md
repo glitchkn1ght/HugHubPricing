@@ -7,7 +7,7 @@ General Design
 Considerations
 - I thought it would be useful to clients to be able to add additional quotation systems to the engine, hence having an add method rather than injecting the systems to the engine constructor. 
 - I have a problem naming things to be clear without being overly verbose. When unable to do both i stick on the side of descriptive. 
-- I didn't unit test the ReponseValidators and a couple of the other classes because they were so small that i thought it wouldn't add much in terms of this exercise. I would always do so for real code. 
+- I didn't unit test some of the ReponseValidators and a couple of the other classes because they were so small that i thought it wouldn't add much in terms of this exercise. I would always do so for real code. 
 - In the original code if the final price was 0 (e.g. no quotes could be found) it was treated as an error. This doesn't seem right to me as based on the details entered there could be valid reason
   for there to be no matching quotes (e.g. you are trying to find a quote for something no one wants to insure). Therefore i treated the original design as a bug and simple informed the user no quotes could be found. 
 
