@@ -45,9 +45,9 @@ namespace HugHubPricing.QuotationSystems
             return result; 
         }
 
-        private bool ValidatePrice(decimal existingPrice, decimal systemPrice)
+        private bool ValidatePrice(decimal? existingPrice, decimal systemPrice)
         {
-            if(existingPrice == 0)
+            if(existingPrice == null)
             {
                 return true;
             }

@@ -6,14 +6,13 @@
         {
             this.Error = new ErrorResult();
         }
-        
-        public decimal Price { get; set; }
-        
-        public decimal Tax { get; set; }
+
+        public decimal? Price { get; set; } = null;
+
+        public decimal? Tax { get; set; } = null;
 
         public string InsurerName { get; set; }
 
         public ErrorResult Error { get; set; }
-
     }
 }
