@@ -143,8 +143,8 @@ namespace HugHubPricingUnitTests.QuotationSystemTests
 
             PricingResult actual = this.quotationSystem.ProcessQuotation(this.testData.Request, this.testData.EmptyResult);
 
-            Assert.AreEqual(0, actual.Tax);
-            Assert.AreEqual(0, actual.Price);
+            Assert.AreEqual(null, actual.Tax);
+            Assert.AreEqual(null, actual.Price);
         }
 
 
@@ -160,8 +160,8 @@ namespace HugHubPricingUnitTests.QuotationSystemTests
 
             PricingResult actual = this.quotationSystem.ProcessQuotation(this.testData.Request, this.testData.EmptyResult);
 
-            Assert.AreEqual(0, actual.Tax);
-            Assert.AreEqual(0, actual.Price);
+            Assert.AreEqual(null, actual.Tax);
+            Assert.AreEqual(null, actual.Price);
         }
     }
 }
