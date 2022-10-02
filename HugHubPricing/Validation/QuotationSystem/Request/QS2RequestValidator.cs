@@ -7,14 +7,21 @@ namespace HugHubPricing.Validation.QuotationSystem.Request
     {
         public bool ValidateRequest(PricingRequest request)
         {
-            if (request.RiskData.Make != "examplemake1" &&
-                request.RiskData.Make != "examplemake2" &&
-                request.RiskData.Make != "examplemake3")
+            if(request.RiskData.Make == null)
             {
                 return false;
             }
+            
+            string make = request.RiskData.Make.Trim().ToLower();
+            
+            if (make == "examplemake1" ||
+                make == "examplemake2" ||
+                make== "examplemake3")
+            {
+                return true;
+            }
 
-            return true;
+            return false;
         }
     }
 }
