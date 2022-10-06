@@ -2,7 +2,7 @@
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IQSResponseMapper
+    public interface IQSResponseMapper : IDependancy
     {
         public PricingResult MapResponse(dynamic systemResponse, PricingResult result);
     }

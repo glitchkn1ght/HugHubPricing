@@ -2,7 +2,7 @@
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IQuotationPricingService
+    public interface IQuotationPricingService : IDependancy
     {
         public dynamic GetServiceResponse(PricingRequest request);
     }

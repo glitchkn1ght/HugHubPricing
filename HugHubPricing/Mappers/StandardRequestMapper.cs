@@ -6,6 +6,8 @@ namespace HugHubPricing.Mappers
 {
     public class StandardRequestMapper : IQSRequestMapper
     {
+        public string Identifier { get; set; } = "Standard";
+
         public dynamic MapRequestFields(PricingRequest request)
         {
             dynamic systemRequest = new ExpandoObject();

@@ -6,16 +6,14 @@ using System.Dynamic;
 
 namespace HugHubPricing.QuotationSystems
 {
-    public class QuotationSystem: IQuotationSystem
+    public class QuotationSystem : IQuotationSystem
     {
         private readonly IQSRequestValidator RequestValidator;
         private readonly IQuotationPricingService QuotationPricingService;
         private readonly IQSResponseValidator ResponseValidator;
         private readonly IQSResponseMapper ResponseMapper;
 
-   
-
-        public QuotationSystem(   
+        public QuotationSystem(
                                     IQSRequestValidator requestValidator,
                                     IQuotationPricingService quotationPricingService,
                                     IQSResponseValidator responseValidator,

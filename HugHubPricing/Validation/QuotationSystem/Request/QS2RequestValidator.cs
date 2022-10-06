@@ -5,6 +5,8 @@ namespace HugHubPricing.Validation.QuotationSystem.Request
 {
     public class QS2RequestValidator : IQSRequestValidator
     {
+        public string Identifier { get; set; } = "QS2";
+
         public bool ValidateRequest(PricingRequest request)
         {
             if(request.RiskData.Make == null)

@@ -2,7 +2,7 @@
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IQSRequestValidator
+    public interface IQSRequestValidator : IDependancy
     {
         public bool ValidateRequest(PricingRequest request);
     }

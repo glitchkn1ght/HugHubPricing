@@ -2,7 +2,7 @@
 
 namespace HugHubPricing.Interfaces
 {
-    public interface IQSRequestMapper
+    public interface IQSRequestMapper : IDependancy
     {
         dynamic MapRequestFields(PricingRequest request);
     }

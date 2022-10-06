@@ -6,6 +6,7 @@ namespace HugHubPricing.Mappers
 {
     public class QS2RequestMapper : IQSRequestMapper
     {
+        public string Identifier { get; set; } = "QS2";
         public dynamic MapRequestFields(PricingRequest request)
         {
             dynamic systemRequest2 = new ExpandoObject();
